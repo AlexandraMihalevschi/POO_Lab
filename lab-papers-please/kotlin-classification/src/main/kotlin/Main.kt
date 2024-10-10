@@ -2,13 +2,19 @@ package oop.practice
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import java.io.File
+import java.io.InputStream
 
 fun main() {
   val objectMapper = ObjectMapper()
-  val input = objectMapper.readTree(File("src/main/resources/test-input.json"))
+  val inputStream: InputStream? = object {}.javaClass.getResourceAsStream("/test-input.json")
+  if (inputStream == null) {
+    println("File not found: src/main/resources/test-input.json")
+    return
+  }
+
+  val input = objectMapper.readTree(inputStream)
   val data = input["data"]
 
   val starWars = Universe("starWars", mutableListOf())
@@ -28,10 +34,17 @@ fun main() {
     }
   }
 
-  File("src/main/resources/output/starwars.json").writeText(objectMapper.writeValueAsString(starWars))
-  File("src/main/resources/output/hitchhiker.json").writeText(objectMapper.writeValueAsString(hitchHiker))
-  File("src/main/resources/output/rings.json").writeText(objectMapper.writeValueAsString(rings))
-  File("src/main/resources/output/marvel.json").writeText(objectMapper.writeValueAsString(starWars))
+
+  writeUniverseToFile(objectMapper, "src/main/resources/output/starwars.json", starWars)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/hitchhiker.json", hitchHiker)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/rings.json", rings)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/marvel.json", marvel)
+}
+
+fun writeUniverseToFile(objectMapper: ObjectMapper, filePath: String, universe: Universe) {
+  val file = File(filePath)
+  file.parentFile.mkdirs() // Create directories if they do not exist
+  file.writeText(objectMapper.writeValueAsString(universe))
 }
 
 data class Universe(
