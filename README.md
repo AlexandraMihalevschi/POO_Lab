@@ -1,3 +1,2 @@
-# OOP COURSE GIT TRACKING
-
-This is a public repository that contains OOP course tracked materials.
+# Laboratory_POO
+This the repository that will store my solutions to the task of the laboratory nr.0.
