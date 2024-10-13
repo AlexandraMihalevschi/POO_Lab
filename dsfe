@@ -1,0 +1,111 @@
+[33mcommit ba4b86b2adce1093d17b6299e5f6e99d71292525[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32moop-intro-classification-system[m[33m)[m
+Author: AlexandraMihalevschi <mihalevschialexandra@gmail.com>
+Date:   Sun Oct 13 20:32:49 2024 +0300
+
+    Create a trust rank using the object CommonClassifier. Change from test-input.json to input.json
+
+[33mcommit 99d271c6d6a990a664500aa6412f099838035b0f[m
+Author: AlexandraMihalevschi <mihalevschialexandra@gmail.com>
+Date:   Sun Oct 13 19:20:00 2024 +0300
+
+    Integrated the classes into the main.kt
+
+[33mcommit 05f42c2448a9ac525cccc861f55c812d90591097[m
+Author: AlexandraMihalevschi <mihalevschialexandra@gmail.com>
+Date:   Sun Oct 13 18:52:35 2024 +0300
+
+    Added the basic checking by planet, age, traits, isHumanoid for the 4 classes
+
+[33mcommit 78a51584af1c71bbe2902bd1f5b6585215078742[m
+Author: AlexandraMihalevschi <mihalevschialexandra@gmail.com>
+Date:   Sun Oct 13 18:31:01 2024 +0300
+
+    Added 4 classes for checking individuals from the 4 different universes
+
+[33mcommit 35d3bca804de0621db39116b749c9be1f4e5a025[m
+Author: AlexandraMihalevschi <mihalevschialexandra@gmail.com>
+Date:   Sun Oct 13 18:07:29 2024 +0300
+
+    Added the JsonParserclass and added it to the main code
+
+[33mcommit 0bf9b2c6005fe8240fdc40cc74c3caad553a4601[m[33m ([m[1;32mmain[m[33m)[m
+Author: AlexandraMihalevschi <mihalevschialexandra@gmail.com>
+Date:   Fri Oct 11 00:08:05 2024 +0300
+
+    Changed the default repository a bit
+
+[33mcommit 962567b1683ccda0a1edb4934cebce6b114aba37[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 35ac432 a9b4394
+Author: Dominic Flocea <45204549+domeeno@users.noreply.github.com>
+Date:   Tue Oct 8 15:09:47 2024 +0300
+
+    Merge pull request #1 from BurdujaAdrian/main
+    
+    Rust classification, draft
+
+[33mcommit a9b43942b44f2f8449163f8ca9ce8505dee83eae[m
+Merge: fccc43a 35ac432
+Author: BurdujaAdrian <adrianburduja7.3@gmail.com>
+Date:   Tue Oct 8 12:50:23 2024 +0300
+
+    Merge branch 'main' of https://github.com/BurdujaAdrian/oop-course-repo
+
+[33mcommit fccc43a9f3c9fe4d2c3a63bdcb4a6675a14ab65e[m
+Author: BurdujaAdrian <adrianburduja7.3@gmail.com>
+Date:   Tue Oct 8 12:40:39 2024 +0300
+
+    created rust classification
+
+[33mcommit 35ac43241f330fe426ca990924fe3b6785fc36bd[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 21:32:44 2024 +0300
+
+    made some consistency adjustments between java kt solutions. add output folder example
+
+[33mcommit d6311d39710e412cff331782a420fb3919da7d3e[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 21:25:47 2024 +0300
+
+    fix kotlin sonarlint git leakage. enhance main function
+
+[33mcommit 6c0beb9b9f6e5a21063352ad9731b6c456b2a181[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 21:18:01 2024 +0300
+
+    fix bug in java classification. remove sonarlint accidental git leakage
+
+[33mcommit 575e7b4d1e0187ec2f1759af337a67f4df99223e[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 10:02:26 2024 +0300
+
+    fix memory leak. consistency update
+
+[33mcommit eec163f30277330924739a16b6f846e8f6b3c80d[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 09:52:32 2024 +0300
+
+    add output files to ignore
+
+[33mcommit 73b5575b755bf919d186be91e52d8ba801520480[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 09:51:27 2024 +0300
+
+    remove output files
+
+[33mcommit 989f1d4360d1370c7e21b9c35070c418a77004af[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Mon Oct 7 09:28:27 2024 +0300
+
+    add java/kt template start projects. add classification and input files.
+
+[33mcommit 71da9319ed3efd8991062759d1c5b54d365a512f[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Sun Oct 6 16:21:42 2024 +0300
+
+    add papers please lab initial readme description
+
+[33mcommit 78ff347fccb9de96872d86e5dda70b18cd81fdd5[m
+Author: domeeno <dominicflocea.dev@gmail.com>
+Date:   Sun Oct 6 15:32:24 2024 +0300
+
+    first commit

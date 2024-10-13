@@ -7,11 +7,11 @@ class StarWarsClassifier {
         val starWarsIndividuals = mutableListOf<JsonNode>()
 
         individuals.forEach { individual ->
-            val correctnessChecks = listOf<(JsonNode) -> Boolean>(
-                { it["isHumanoid"] != null },
-                { it["planet"] != null },
-                { it["age"] != null },
-                { it["traits"] != null }
+            val primaryChecks = listOf(
+                { indiv: JsonNode -> indiv["isHumanoid"] !== null } to true,
+                { indiv: JsonNode -> indiv["planet"] !== null } to true,
+                { indiv: JsonNode -> indiv["age"] !== null } to true,
+                { indiv: JsonNode -> indiv["traits"] !== null } to true
             )
 
             val criteria = listOf(
@@ -30,7 +30,11 @@ class StarWarsClassifier {
                 { indiv: JsonNode -> indiv["traits"]?.map { it.asText() }?.contains("HAIRY") == true } to true
             )
 
-            if (CommonClassifier.classifyIndividual(individual, criteria, correctnessChecks)) {
+            val correctnessChecks = listOf(
+                { indiv: JsonNode -> indiv["planet"]?.asText()?.equals("Kashyyyk", ignoreCase = true) == true || indiv["planet"]?.asText()?.equals("Endor", ignoreCase = true) == true }
+            )
+
+            if (CommonClassifier.classifyIndividual(individual, primaryChecks, criteria, correctnessChecks)) {
                 starWarsIndividuals.add(individual)
             }
         }
