@@ -7,12 +7,23 @@ class MarvelClassifier {
         val marvelIndividuals = mutableListOf<JsonNode>()
 
         individuals.forEach { individual ->
-            val isHumanoid = individual["isHumanoid"]?.asBoolean() ?: false
-            val age = individual["age"]?.asInt() ?: -1
-            val planet = individual["planet"]?.asText() ?: ""
-            val traits = individual["traits"]?.map { it.asText() } ?: emptyList()
+            val correctnessChecks = listOf<(JsonNode) -> Boolean>(
+                { it["isHumanoid"] != null },
+                { it["planet"] != null },
+                { it["age"] != null },
+                { it["traits"] != null }
+            )
 
-            if (isHumanoid && planet.equals("Asgard", ignoreCase = true) && age in 0..5000 && traits.containsAll(listOf("BLONDE", "TALL"))) {
+            val criteria = listOf(
+                // Asgardian traits
+                { indiv: JsonNode -> indiv["isHumanoid"]?.asBoolean() == true } to true,
+                { indiv: JsonNode -> indiv["planet"]?.asText()?.equals("Asgard", ignoreCase = true) == true } to true,
+                { indiv: JsonNode -> (indiv["age"]?.asInt() ?: -1) in 0..5000 } to true,
+                { indiv: JsonNode -> indiv["traits"]?.map { it.asText() }?.contains("BLONDE") == true } to true,
+                { indiv: JsonNode -> indiv["traits"]?.map { it.asText() }?.contains("TALL") == true } to true
+            )
+
+            if (CommonClassifier.classifyIndividual(individual, criteria, correctnessChecks)) {
                 marvelIndividuals.add(individual)
             }
         }

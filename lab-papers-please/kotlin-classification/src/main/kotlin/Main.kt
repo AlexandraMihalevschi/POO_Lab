@@ -7,7 +7,7 @@ import java.io.InputStream
 
 fun main() {
   val objectMapper = ObjectMapper()
-  val inputStream: InputStream? = object {}.javaClass.getResourceAsStream("/test-input.json")
+  val inputStream: InputStream? = object {}.javaClass.getResourceAsStream("/input.json")
 
   val jsonParser = JsonParser(objectMapper)
   val individuals = jsonParser.parseJsonFile(inputStream)
