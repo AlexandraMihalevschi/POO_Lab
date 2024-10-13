@@ -3,9 +3,9 @@ package oop.practice
 import com.fasterxml.jackson.databind.JsonNode
 
 object CommonClassifier {
-    const val TRUST_THRESHOLD = 1
+    const val TRUST_THRESHOLD = 0
 
-    // Perform the initial filtering based on primary characteristics and trust rank calculation
+    // Initial filtering based on primary characteristics and trust rank calculation
     fun classifyIndividual(
         individual: JsonNode,
         primaryChecks: List<Pair<(JsonNode) -> Boolean, Boolean>>, // Checks for initial filtering
@@ -23,14 +23,14 @@ object CommonClassifier {
         var trustRank = 0
         criteria.forEach { (criterion, expected) ->
             val result = criterion(individual)
-            if (result == expected) {
+            if (result == expected) { //Add if the result is explicitly correct
                 trustRank++
-            } else if (result != null) {
+            } else if (result == false) { // Only subtract if the result is explicitly false
                 trustRank--
             }
         }
 
-        // Perform correctness checks
-        return trustRank > TRUST_THRESHOLD && correctnessChecks.all { it(individual) }
+        // Perform correctness checks again
+        return trustRank >= TRUST_THRESHOLD && correctnessChecks.all { it(individual) }
     }
 }
