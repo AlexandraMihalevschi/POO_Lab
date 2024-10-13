@@ -15,29 +15,28 @@ fun main() {
   // Print all individuals
   jsonParser.printIndividuals(individuals)
 
-  // Create universes
-  val starWars = Universe("starWars", mutableListOf())
-  val hitchHiker = Universe("hitchHiker", mutableListOf())
-  val rings = Universe("rings", mutableListOf())
-  val marvel = Universe("marvel", mutableListOf())
+  // Classify individuals per universe
+  val starWarsClassifier = StarWarsClassifier()
+  val hitchHikerClassifier = HitchHikerClassifier()
+  val ringsClassifier = RingsClassifier()
+  val marvelClassifier = MarvelClassifier()
 
-  // Manual sorting part
-  individuals.forEach {
-    println(it)
+  val starWarsIndividuals = starWarsClassifier.classify(individuals)
+  val hitchHikerIndividuals = hitchHikerClassifier.classify(individuals)
+  val ringsIndividuals = ringsClassifier.classify(individuals)
+  val marvelIndividuals = marvelClassifier.classify(individuals)
 
-    when (readlnOrNull()) {
-      "4" -> starWars.individuals.add(it)
-      "1" -> hitchHiker.individuals.add(it)
-      "3" -> rings.individuals.add(it)
-      "2" -> marvel.individuals.add(it)
-    }
-  }
+  // Create Universe objects
+  val starWarsUniverse = Universe("starWars", starWarsIndividuals)
+  val hitchHikerUniverse = Universe("hitchHiker", hitchHikerIndividuals)
+  val ringsUniverse = Universe("rings", ringsIndividuals)
+  val marvelUniverse = Universe("marvel", marvelIndividuals)
 
   // Write to output files
-  writeUniverseToFile(objectMapper, "src/main/resources/output/starwars.json", starWars)
-  writeUniverseToFile(objectMapper, "src/main/resources/output/hitchhiker.json", hitchHiker)
-  writeUniverseToFile(objectMapper, "src/main/resources/output/rings.json", rings)
-  writeUniverseToFile(objectMapper, "src/main/resources/output/marvel.json", marvel)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/starwars.json", starWarsUniverse)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/hitchhiker.json", hitchHikerUniverse)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/rings.json", ringsUniverse)
+  writeUniverseToFile(objectMapper, "src/main/resources/output/marvel.json", marvelUniverse)
 }
 
 fun writeUniverseToFile(objectMapper: ObjectMapper, filePath: String, universe: Universe) {
